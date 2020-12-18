@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <conditions />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import conditions from './components/Conditions.vue';
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld,
+    conditions,
   },
 };
 </script>
 
 <style lang="scss">
-#app {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-size: 12px;
+  text-align: left;
+  background-color: #f5f5f7;
+  color: #000000;
+}
+
+#app {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  justify-content: flex-start;
 }
 </style>
