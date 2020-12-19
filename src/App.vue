@@ -13,6 +13,7 @@ export default {
     conditions,
   },
 };
+
 </script>
 
 <style lang="scss">
@@ -42,5 +43,6 @@ body {
   max-width: 960px;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 </style>
