@@ -1,14 +1,14 @@
 <template>
   <div class="component">
     <div class="component__header">
-      <p>Conditions</p>
+      <p>{{ displaySettings.subType }}</p>
     </div>
     <div class="component__title">
-      <p> > Followers</p>
+      <p>{{ displaySettings.type }}</p>
     </div>
     <div class="component__mBody">
       <div class="mBody__options">
-        <p>Follow</p>
+        <p>{{ checkingComponentTitle }}</p>
       </div>
       <div class="mBody__values">
         <div class="values__opt"></div>
@@ -36,7 +36,7 @@ export default {
         {
           type: 'rule',
           condition: {
-	  entity: 'contact',
+            entity: 'contact',
             field: 'followers',
             operand: 'lt',
             value: 5000,
@@ -52,7 +52,7 @@ export default {
         {
           type: 'rule',
           condition: {
-	  entity: 'contact',
+            entity: 'contact',
             field: 'followers',
             operand: 'lt',
             value: 15000,
@@ -65,6 +65,14 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    checkingComponentTitle() {
+      if (this.displaySettings.type === 'followers') {
+        return 'Followers count is Greater than';
+      }
+      return 'Err';
+    },
   },
 };
 </script>
@@ -92,6 +100,9 @@ export default {
     p {
       padding: 0 10px;
     }
+    p:first-letter {
+    text-transform: capitalize;
+    }
 }
 
 .component__title {
@@ -100,10 +111,13 @@ export default {
   width: 100%;
   min-height: 34px;
   border-bottom: 1px solid #d1d1d1;
-  p {
+    p {
       padding: 0 10px;
       color: #818181;
       font-size: 9px;
+     }
+    p:first-letter {
+    text-transform: capitalize;
     }
 }
 
