@@ -11,7 +11,7 @@
         <p>{{ checkingComponentTitle }}</p>
       </div>
       <div class="mBody__values">
-        <div class="values__opt"><input type="text"> {{elements}}</div>
+        <div class="values__opt"><input type="text" v-bind:value="elements.value"> </div>
         <!-- {{ dataChecker() }} -->
         <div class="values__addBtn">
             <button>+ Add value</button>
@@ -74,6 +74,7 @@ export default {
   computed: {
     checkingComponentTitle() {
       if (this.displaySettings.type === 'followers') {
+        console.log(this.elements[0].condition.value);
         return 'Followers count is Greater than';
       }
       return 'Err';
