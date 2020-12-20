@@ -11,10 +11,13 @@
         <p>{{ checkingComponentTitle }}</p>
       </div>
       <div class="mBody__values">
-        <div class="values__opt"><input type="text"> {{elements}}</div>
+        <div class="values__opt" v-bind:key="element.condition.value" v-for="element of elements">
+          <input type="text" v-bind:value="element.condition.value" />
+        </div>
+        <!-- this.elements[0].condition.value -->
         <!-- {{ dataChecker() }} -->
         <div class="values__addBtn">
-            <button>+ Add value</button>
+            <button @click="addValue()">+ Add value</button>
         </div>
       </div>
     </div>
@@ -46,74 +49,47 @@ export default {
             value: 5000,
           },
           onFail: {
-            action: 'fallthrough',
+            action: 'goto',
+            target: '5e26e98027b2c58a70085d4e',
           },
           onMatch: {
             action: 'goto',
-            target: '5e26e98027b2c58a1f',
+            target: '5e26e98027b2c58a70085d4f',
           },
-        },
-        {
-          type: 'rule',
-          condition: {
-            entity: 'contact',
-            field: 'followers',
-            operand: 'lt',
-            value: 10000,
-          },
-          onFail: {
-            action: 'goto',
-            target: '5e26e98027b2c58a2e',
-          },
-          onMatch: null,
         },
       ],
-      valueArr: [],
     };
   },
   computed: {
     checkingComponentTitle() {
       if (this.displaySettings.type === 'followers') {
+        // console.log(this.elements[0].condition.value);
         return 'Followers count is Greater than';
       }
       return 'Err';
     },
   },
-  // methods: {
-  //   dataChecker() {
-  //     // return (console.log(typeof (this.elements)));
-  //     return this.elements.forEach(1);
-  //   },
-  // },
+  methods: {
+    addValue() {
+      const lastArrItem = [];
+      // const lastArrItem = this.elements.slice(-1);
+      // const lastArrItem = lastArrItem.Object.fromEntries(lastArrItem);
+      // const lastArrItem = [...this.elements];
+      // const lastArrItem = this.elements[this.elements.length - 1];
+      // lastArrItem[0].onMatch = 'null';
+      // lastArrItem.onFail = this.elements[this.elements.length - 1].onFail;
+      // this.elements[this.elements.length - 1].onFail = this.elements[0].onFail;
+      // this.elements[this.elements.length - 1].onFail.action = 'fallthrough';
+      console.log(lastArrItem);
+      console.log(typeof (lastArrItem));
+      console.log(typeof (this.elements));
+      console.log(this.elements);
+      // return this.elements.push(lastArrItem[0]);
+      // this.elements.push(lastArrItem[0]);
+      // [...this.elements.onMatch] = 'null';
+    },
+  },
 };
-
-// methods: {
-
-// eslint-disable-next-line consistent-return
-//   dataChecker() {
-//     for (let i = 0; i < this.elements.length; i += 1) {
-//       if (this.elements[i] >= 0) {
-//         return `<div class="values__opt">${this.elements[i].value}</div>`;
-//       }
-//       return '<div class="values__opt">Err</div>';
-//     }
-//   },
-// },
-// methods: {
-//   dataChecker() {
-//     for (let i = 0; i < this.elements.length; i += 1) {
-//       if (this.elements[i] >= 0) {
-//         this.valueArr.push(this.elements[i].value);
-//         return this.valueArr;
-//       }
-//       this.valueArr.push('Err');
-//       return this.valueArr;
-//     }
-//   },
-// },
-// watch: {
-// },
-// };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -141,7 +117,7 @@ export default {
       padding: 0 10px;
     }
     p:first-letter {
-    text-transform: capitalize;
+      text-transform: capitalize;
     }
 }
 
@@ -155,9 +131,9 @@ export default {
       padding: 0 10px;
       color: #818181;
       font-size: 9px;
-     }
+    }
     p:first-letter {
-    text-transform: capitalize;
+      text-transform: capitalize;
     }
 }
 
@@ -173,7 +149,7 @@ export default {
   align-items: center;
   width: 65%;
   min-height: 34px;
-  p {
+    p {
       padding: 0 10px;
       color: #818181;
     }
@@ -192,11 +168,11 @@ export default {
   min-height: 34px;
   border: 1px #d1d1d1;
   border-style: none dashed dashed;
-  input {
-    width: 100%;
-    min-height: 34px;
-    border: none;
-  }
+    input {
+      width: 100%;
+      min-height: 34px;
+      border: none;
+    }
 }
 
 .values__addBtn {
@@ -204,11 +180,11 @@ export default {
   min-height: 34px;
   border: 1px #d1d1d1;
   border-style: none dashed dashed;
-  button {
-    width: 100%;
-    min-height: 34px;
-    border: none;
-  }
+    button {
+      width: 100%;
+      min-height: 34px;
+      border: none;
+    }
 }
 
 .component__bottom {
@@ -222,7 +198,7 @@ export default {
   align-items: center;
   width: 65%;
   min-height: 34px;
-  p {
+    p {
       padding: 0 10px;
       color: #818181;
     }
