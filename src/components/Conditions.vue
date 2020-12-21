@@ -49,35 +49,21 @@ export default {
             value: 5000,
           },
           onFail: {
-            action: 'fallthrough',
+            action: 'goto',
+            target: '5e26e98027b2c58a70085d4e',
           },
           onMatch: {
             action: 'goto',
-            target: '5e26e98027b2c58a1f',
+            target: '5e26e98027b2c58a70085d4f',
           },
         },
-        // {
-        //   type: 'rule',
-        //   condition: {
-        //     entity: 'contact',
-        //     field: 'followers',
-        //     operand: 'lt',
-        //     value: 10000,
-        //   },
-        //   onFail: {
-        //     action: 'goto',
-        //     target: '5e26e98027b2c58a2e',
-        //   },
-        //   onMatch: null,
-        // },
       ],
-      valueArr: [],
     };
   },
   computed: {
     checkingComponentTitle() {
       if (this.displaySettings.type === 'followers') {
-        console.log(this.elements[0].condition.value);
+        // console.log(this.elements[0].condition.value);
         return 'Followers count is Greater than';
       }
       return 'Err';
@@ -85,18 +71,22 @@ export default {
   },
   methods: {
     addValue() {
-      const lastArrItem = this.elements.slice(-1);
+      const lastArrItem = [];
+      // const lastArrItem = this.elements.slice(-1);
+      // const lastArrItem = lastArrItem.Object.fromEntries(lastArrItem);
       // const lastArrItem = [...this.elements];
       // const lastArrItem = this.elements[this.elements.length - 1];
-      // console.log(lastArrItem);
-      lastArrItem.onMatch = 'null';
+      // lastArrItem[0].onMatch = 'null';
       // lastArrItem.onFail = this.elements[this.elements.length - 1].onFail;
       // this.elements[this.elements.length - 1].onFail = this.elements[0].onFail;
       // this.elements[this.elements.length - 1].onFail.action = 'fallthrough';
       console.log(lastArrItem);
+      console.log(typeof (lastArrItem));
+      console.log(typeof (this.elements));
       console.log(this.elements);
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      return this.elements.push(lastArrItem);
+      // return this.elements.push(lastArrItem[0]);
+      // this.elements.push(lastArrItem[0]);
+      // [...this.elements.onMatch] = 'null';
     },
   },
 };
