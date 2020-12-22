@@ -11,11 +11,11 @@
         <p>{{ checkingComponentTitle }}</p>
       </div>
       <div class="mBody__values">
-        <div class="values__opt" v-bind:key="element.condition.value" v-for="element of elements">
-          <input type="text" v-bind:value="element.condition.value" />
+        <div class="values__opt" :key="element.condition.value"
+        v-for="(element, index) of elements">
+          <button @click="remove(index)">&times;</button>
+          <input type="text" v-model="element.condition.value"/>
         </div>
-        <!-- this.elements[0].condition.value -->
-        <!-- {{ dataChecker() }} -->
         <div class="values__addBtn">
             <button @click="addValue()">+ Add value</button>
         </div>
@@ -68,25 +68,23 @@ export default {
       }
       return 'Err';
     },
+    lastItemElements() {
+      return this.elements[this.elements.length - 1];
+    },
   },
   methods: {
     addValue() {
-      const lastArrItem = [];
-      // const lastArrItem = this.elements.slice(-1);
-      // const lastArrItem = lastArrItem.Object.fromEntries(lastArrItem);
-      // const lastArrItem = [...this.elements];
-      // const lastArrItem = this.elements[this.elements.length - 1];
-      // lastArrItem[0].onMatch = 'null';
-      // lastArrItem.onFail = this.elements[this.elements.length - 1].onFail;
-      // this.elements[this.elements.length - 1].onFail = this.elements[0].onFail;
-      // this.elements[this.elements.length - 1].onFail.action = 'fallthrough';
-      console.log(lastArrItem);
-      console.log(typeof (lastArrItem));
-      console.log(typeof (this.elements));
+      const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
+      newValue.onMatch = null;
+      // newValue.onFail = this.elements[this.elements.length - 1].onFail;
+      this.elements[this.elements.length - 1].onFail = 'fallthrough';
+      this.elements.push(newValue);
       console.log(this.elements);
-      // return this.elements.push(lastArrItem[0]);
-      // this.elements.push(lastArrItem[0]);
-      // [...this.elements.onMatch] = 'null';
+    },
+    remove(index) {
+      console.log(this.elements, index);
+      this.elements.splice(index, 1);
+      // this.$delete(this.elements, index);
     },
   },
 };
@@ -164,6 +162,7 @@ export default {
 }
 
 .values__opt {
+  display: flex;
   width: 100%;
   min-height: 34px;
   border: 1px #d1d1d1;
@@ -171,7 +170,13 @@ export default {
     input {
       width: 100%;
       min-height: 34px;
+      padding: 0 10px;
       border: none;
+      outline: none;
+    }
+    button {
+      border: none;
+      background: none;
     }
 }
 
@@ -184,6 +189,7 @@ export default {
       width: 100%;
       min-height: 34px;
       border: none;
+      background: none;
     }
 }
 
