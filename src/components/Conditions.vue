@@ -11,10 +11,9 @@
         <p>{{ checkingComponentTitle }}</p>
       </div>
       <div class="mBody__values">
-        <div class="values__opt" :key="element.condition.value"
-        v-for="(element, index) of elements">
+        <div class="values__opt" v-for="(element, index) of elements" :key="index">
           <button @click="remove(index)">&times;</button>
-          <input type="text" v-model="element.condition.value"/>
+          <input v-model.number="element.condition.value" />
         </div>
         <div class="values__addBtn">
             <button @click="addValue()">+ Add value</button>
@@ -60,10 +59,15 @@ export default {
       ],
     };
   },
+  mounted() {
+    const firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
+    console.log(firstOnFailSaver);
+    console.log(this.elements.length);
+    return firstOnFailSaver;
+  },
   computed: {
     checkingComponentTitle() {
       if (this.displaySettings.type === 'followers') {
-        // console.log(this.elements[0].condition.value);
         return 'Followers count is Greater than';
       }
       return 'Err';
@@ -74,7 +78,7 @@ export default {
   },
   methods: {
     addValue() {
-      const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
+      const newValue = JSON.parse(JSON.stringify(this.lastItemElements)); // Why not a function?????
       newValue.onMatch = null;
       // newValue.onFail = this.elements[this.elements.length - 1].onFail;
       this.elements[this.elements.length - 1].onFail = 'fallthrough';
@@ -82,9 +86,30 @@ export default {
       console.log(this.elements);
     },
     remove(index) {
-      console.log(this.elements, index);
       this.elements.splice(index, 1);
-      // this.$delete(this.elements, index);
+      console.log(this.firstOnFailSaver);
+      // this.$delete(this.elements, index); ?????
+    },
+  },
+  // watch: {
+  //   elements: checkingElementsNumbers() {},
+  // elements() {
+  //     if (this.elements.length === 1) {
+  //       console.log(this.firstOnFailSaver);
+  //       console.log(this.firstOnFailSaver);
+  //       console.log(this.firstOnFailSaver);
+  //       this.elements[0].onFail = this.firstOnFailSaver.onFail;
+  //     }
+  //   },
+  // },
+  watch: {
+    elements() {
+      if (this.elements.length === 1) {
+        console.log(this.firstOnFailSaver);
+        console.log(this.firstOnFailSaver);
+        console.log(this.firstOnFailSaver);
+        this.elements[0].onFail = this.firstOnFailSaver.onFail;
+      }
     },
   },
 };
