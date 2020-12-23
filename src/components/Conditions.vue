@@ -12,7 +12,7 @@
       </div>
       <div class="mBody__values">
         <div class="values__opt" v-for="(element, index) of elements" :key="index">
-          <button @click="remove(index)">&times;</button>
+          <button @click="removeElement(index)">&times;</button>
           <input v-model.number="element.condition.value" />
         </div>
         <div class="values__addBtn">
@@ -78,40 +78,36 @@ export default {
   },
   methods: {
     addValue() {
-      const newValue = JSON.parse(JSON.stringify(this.lastItemElements)); // Why not a function?????
+      const newValue = JSON.parse(JSON.stringify(this.lastItemElements)); // Why not a func? this?
       newValue.onMatch = null;
       // newValue.onFail = this.elements[this.elements.length - 1].onFail;
       this.elements[this.elements.length - 1].onFail = 'fallthrough';
       this.elements.push(newValue);
       console.log(this.elements);
     },
-    remove(index) {
+    removeElement(index) {
       this.elements.splice(index, 1);
-      console.log(this.firstOnFailSaver);
       // this.$delete(this.elements, index); ?????
     },
   },
+
   // watch: {
-  //   elements: checkingElementsNumbers() {},
-  // elements() {
+  //   elements(oldElements, newElements) {
+  //     // for (let i = 0; i < this.elements.length; i += 1) {
+  //     //   if (this.elements[i] === 1) {
+  //     //     console.log(this.elements);
+  //     //   }
+  //     // }
   //     if (this.elements.length === 1) {
   //       console.log(this.firstOnFailSaver);
   //       console.log(this.firstOnFailSaver);
   //       console.log(this.firstOnFailSaver);
-  //       this.elements[0].onFail = this.firstOnFailSaver.onFail;
+  //       this.elements[0].onFail = 5555;
+  //       console.log(this.elements);
   //     }
   //   },
   // },
-  watch: {
-    elements() {
-      if (this.elements.length === 1) {
-        console.log(this.firstOnFailSaver);
-        console.log(this.firstOnFailSaver);
-        console.log(this.firstOnFailSaver);
-        this.elements[0].onFail = this.firstOnFailSaver.onFail;
-      }
-    },
-  },
+
 };
 </script>
 
