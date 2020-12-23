@@ -33,7 +33,7 @@
 export default {
   name: 'conditions',
   data() {
-    return {
+    return { // : ( ) return ?????
       displaySettings: {
         subType: 'condition',
         type: 'followers',
@@ -90,24 +90,17 @@ export default {
       // this.$delete(this.elements, index); ?????
     },
   },
-
-  // watch: {
-  //   elements(oldElements, newElements) {
-  //     // for (let i = 0; i < this.elements.length; i += 1) {
-  //     //   if (this.elements[i] === 1) {
-  //     //     console.log(this.elements);
-  //     //   }
-  //     // }
-  //     if (this.elements.length === 1) {
-  //       console.log(this.firstOnFailSaver);
-  //       console.log(this.firstOnFailSaver);
-  //       console.log(this.firstOnFailSaver);
-  //       this.elements[0].onFail = 5555;
-  //       console.log(this.elements);
-  //     }
-  //   },
-  // },
-
+  watch: {
+    elements: {
+      deep: true,
+      handler(newElements, oldElements) {
+        if (newElements.length === 1 || oldElements.length === 1) {
+          this.elements[0].onFail = 5555;
+          console.log(this.elements);
+        }
+      },
+    },
+  },
 };
 </script>
 
