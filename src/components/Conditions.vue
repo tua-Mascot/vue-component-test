@@ -12,7 +12,7 @@
       </div>
       <div class="mBody__values">
         <div class="values__opt" v-for="(element, index) of elements" :key="index">
-          <button @click="remove(index)">&times;</button>
+          <button @click="removeElement(index)">&times;</button>
           <input v-model.number="element.condition.value" />
         </div>
         <div class="values__addBtn">
@@ -33,7 +33,7 @@
 export default {
   name: 'conditions',
   data() {
-    return {
+    return { // : ( ) return ?????
       displaySettings: {
         subType: 'condition',
         type: 'followers',
@@ -78,38 +78,27 @@ export default {
   },
   methods: {
     addValue() {
-      const newValue = JSON.parse(JSON.stringify(this.lastItemElements)); // Why not a function?????
+      const newValue = JSON.parse(JSON.stringify(this.lastItemElements)); // Why not a func? this?
       newValue.onMatch = null;
       // newValue.onFail = this.elements[this.elements.length - 1].onFail;
       this.elements[this.elements.length - 1].onFail = 'fallthrough';
       this.elements.push(newValue);
       console.log(this.elements);
     },
-    remove(index) {
+    removeElement(index) {
       this.elements.splice(index, 1);
-      console.log(this.firstOnFailSaver);
       // this.$delete(this.elements, index); ?????
     },
   },
-  // watch: {
-  //   elements: checkingElementsNumbers() {},
-  // elements() {
-  //     if (this.elements.length === 1) {
-  //       console.log(this.firstOnFailSaver);
-  //       console.log(this.firstOnFailSaver);
-  //       console.log(this.firstOnFailSaver);
-  //       this.elements[0].onFail = this.firstOnFailSaver.onFail;
-  //     }
-  //   },
-  // },
   watch: {
-    elements() {
-      if (this.elements.length === 1) {
-        console.log(this.firstOnFailSaver);
-        console.log(this.firstOnFailSaver);
-        console.log(this.firstOnFailSaver);
-        this.elements[0].onFail = this.firstOnFailSaver.onFail;
-      }
+    elements: {
+      deep: true,
+      handler(newElements, oldElements) {
+        if (newElements.length === 1 || oldElements.length === 1) {
+          this.elements[0].onFail = 5555;
+          console.log(this.elements);
+        }
+      },
     },
   },
 };
