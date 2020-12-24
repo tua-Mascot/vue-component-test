@@ -12,9 +12,10 @@
         <p>{{ checkingComponentTitle }}</p>
       </div>
       <div class='mBody__values'>
-        <div class='values__opt' v-for='(element, index) of elements' :key='index'>
-          <button @click='removeElement(index)'>&times;</button>
-          <input v-model.number='element.condition.value' />
+         <div class='values__opt' v-for='(element, index) of elements' :key='index'> <!-- key id -->
+          <button :disabled='elements.length == 1' @click='removeElement(index)'
+          :style='{opacity: elements.length > 1 ? 1 : 0}'>&times;</button>
+          <input v-model='element.condition.value' />
         </div>
         <div class='values__addBtn'>
             <button @click='addValue()'>+ Add value</button>
@@ -59,13 +60,11 @@ export default {
           },
         },
       ],
+      firstOnFailSaver: null,
     };
   },
   mounted() {
-    const firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
-    console.log(firstOnFailSaver);
-    console.log(this.elements.length);
-    return firstOnFailSaver;
+    this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
   computed: {
     checkingComponentTitle() {
@@ -75,6 +74,7 @@ export default {
       return 'Err';
     },
     lastItemElements() {
+      // console.log(this.elements[this.elements.length - 1].condition.value);
       return this.elements[this.elements.length - 1];
     },
   },
@@ -85,7 +85,7 @@ export default {
       // newValue.onFail = this.elements[this.elements.length - 1].onFail;
       this.elements[this.elements.length - 1].onFail = 'fallthrough';
       this.elements.push(newValue);
-      console.log(this.elements);
+      // console.log(this.elements);
     },
     removeElement(index) {
       this.elements.splice(index, 1);
@@ -95,9 +95,9 @@ export default {
   watch: {
     elements: {
       deep: true,
-      handler(newElements, oldElements) {
-        if (newElements.length === 1 || oldElements.length === 1) {
-          this.elements[0].onFail = 5555;
+      handler(newElements) {
+        if (newElements.length === 1) {
+          this.elements[0].onFail = this.firstOnFailSaver;
           console.log(this.elements);
         }
       },
@@ -119,6 +119,7 @@ export default {
     border-radius: 12px;
     border: 1px solid #41b883;
     box-shadow: 3px 3px 3px #dddddd;
+    overflow: hidden;
   }
 
   .component__header {
@@ -128,8 +129,6 @@ export default {
     min-height: 34px;
     /* max-height: 42px; */
     background-color: #bae7d3;
-    /* color: #ffffff; */
-    border-radius: 12px 12px 0 0;
       p {
         padding: 0 10px 0 0;
       }
