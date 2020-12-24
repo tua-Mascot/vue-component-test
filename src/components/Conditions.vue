@@ -106,128 +106,128 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
-.component {
-  min-width: 225px;
-  max-width: 225px;
-  min-height: 275px;
-  margin: 12px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 3px 3px 3px #dddddd;
-}
+  .component {
+    min-width: 225px;
+    max-width: 225px;
+    min-height: 275px;
+    margin: 12px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 3px 3px 3px #dddddd;
+  }
 
-.component__header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 34px;
-  /* max-height: 42px; */
-  background-color: #16965a;
-  color: #ffffff;
-  border-radius: 12px 12px 0 0;
-    p {
-      padding: 0 10px;
-    }
-    p:first-letter {
-      text-transform: capitalize;
-    }
-}
+  .component__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 34px;
+    /* max-height: 42px; */
+    background-color: #16965a;
+    color: #ffffff;
+    border-radius: 12px 12px 0 0;
+      p {
+        padding: 0 10px;
+      }
+      p:first-letter {
+        text-transform: capitalize;
+      }
+  }
 
-.component__title {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 34px;
-  border-bottom: 1px solid #d1d1d1;
-    p {
-      padding: 0 10px;
-      color: #818181;
-      font-size: 9px;
-    }
-    p:first-letter {
-      text-transform: capitalize;
-    }
-}
+  .component__title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 34px;
+    border-bottom: 1px solid #d1d1d1;
+      p {
+        padding: 0 10px;
+        color: #818181;
+        font-size: 9px;
+      }
+      p:first-letter {
+        text-transform: capitalize;
+      }
+  }
 
-.component__mBody {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 34px;
-}
+  .component__mBody {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 34px;
+  }
 
-.mBody__options {
-  display: flex;
-  align-items: center;
-  width: 65%;
-  min-height: 34px;
-    p {
-      padding: 0 10px;
-      color: #818181;
-    }
-}
+  .mBody__options {
+    display: flex;
+    align-items: center;
+    width: 65%;
+    min-height: 34px;
+      p {
+        padding: 0 10px;
+        color: #818181;
+      }
+  }
 
-.mBody__values {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 35%;
-  min-height: 34px;
-}
+  .mBody__values {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 35%;
+    min-height: 34px;
+  }
 
-.values__opt {
-  display: flex;
-  width: 100%;
-  min-height: 34px;
-  border: 1px #d1d1d1;
-  border-style: none dashed dashed;
-    input {
-      width: 100%;
-      min-height: 34px;
-      padding: 0 10px;
-      border: none;
-      outline: none;
-    }
-    button {
-      border: none;
-      background: none;
-    }
-}
+  .values__opt {
+    display: flex;
+    width: 100%;
+    min-height: 34px;
+    border: 1px #d1d1d1;
+    border-style: none dashed dashed;
+      input {
+        width: 100%;
+        min-height: 34px;
+        padding: 0 10px;
+        border: none;
+        outline: none;
+      }
+      button {
+        border: none;
+        background: none;
+      }
+  }
 
-.values__addBtn {
-  width: 100%;
-  min-height: 34px;
-  border: 1px #d1d1d1;
-  border-style: none dashed dashed;
-    button {
-      width: 100%;
-      min-height: 34px;
-      border: none;
-      background: none;
-    }
-}
+  .values__addBtn {
+    width: 100%;
+    min-height: 34px;
+    border: 1px #d1d1d1;
+    border-style: none dashed dashed;
+      button {
+        width: 100%;
+        min-height: 34px;
+        border: none;
+        background: none;
+      }
+  }
 
-.component__bottom {
-  display: flex;
-  width: 100%;
-  min-height: 34px;
-}
+  .component__bottom {
+    display: flex;
+    width: 100%;
+    min-height: 34px;
+  }
 
-.bottom__title {
-  display: flex;
-  align-items: center;
-  width: 65%;
-  min-height: 34px;
-    p {
-      padding: 0 10px;
-      color: #818181;
-    }
-}
+  .bottom__title {
+    display: flex;
+    align-items: center;
+    width: 65%;
+    min-height: 34px;
+      p {
+        padding: 0 10px;
+        color: #818181;
+      }
+  }
 
-.bottom__totalValue {
-  display: flex;
-  align-items: center;
-  width: 35%;
-  min-height: 34px;
-}
+  .bottom__totalValue {
+    display: flex;
+    align-items: center;
+    width: 35%;
+    min-height: 34px;
+  }
 </style>
