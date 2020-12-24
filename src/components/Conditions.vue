@@ -1,6 +1,7 @@
 <template>
   <div class='component'>
     <div class='component__header'>
+      <img :src='require( `@/assets/logo.png`)' width='16' height='16' alt='Vue'/>
       <p>{{ displaySettings.subType }}</p>
     </div>
     <div class='component__title'>
@@ -33,6 +34,7 @@
 export default {
   name: 'conditions',
   data() {
+    // require('@/assets/logo.png');
     return { // : ( ) return ?????
       displaySettings: {
         subType: 'condition',
@@ -107,12 +109,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
   .component {
+    display: flex;
+    flex-direction: column;
     min-width: 225px;
     max-width: 225px;
     min-height: 275px;
     margin: 12px;
     background-color: #ffffff;
     border-radius: 12px;
+    border: 1px solid #41b883;
     box-shadow: 3px 3px 3px #dddddd;
   }
 
@@ -122,14 +127,17 @@ export default {
     width: 100%;
     min-height: 34px;
     /* max-height: 42px; */
-    background-color: #16965a;
-    color: #ffffff;
+    background-color: #bae7d3;
+    /* color: #ffffff; */
     border-radius: 12px 12px 0 0;
       p {
-        padding: 0 10px;
+        padding: 0 10px 0 0;
       }
       p:first-letter {
         text-transform: capitalize;
+      }
+      img {
+        margin: 0 6px;
       }
   }
 
@@ -138,7 +146,8 @@ export default {
     align-items: center;
     width: 100%;
     min-height: 34px;
-    border-bottom: 1px solid #d1d1d1;
+    border: 1px solid #d1d1d1;
+    border-style: solid none;
       p {
         padding: 0 10px;
         color: #818181;
@@ -172,7 +181,7 @@ export default {
     align-items: center;
     flex-direction: column;
     width: 35%;
-    min-height: 34px;
+    /* min-height: 34px; */
   }
 
   .values__opt {
@@ -180,15 +189,19 @@ export default {
     width: 100%;
     min-height: 34px;
     border: 1px #d1d1d1;
-    border-style: none dashed dashed;
+    border-style: none none dashed dashed;
       input {
-        width: 100%;
+        width: 80%;
         min-height: 34px;
-        padding: 0 10px;
+        padding: 0 0 0 5px;
         border: none;
         outline: none;
+          /* &:focus {
+            border: 1px solid #41b883;
+          } */
       }
       button {
+        width: 20%;
         border: none;
         background: none;
       }
@@ -198,8 +211,9 @@ export default {
     width: 100%;
     min-height: 34px;
     border: 1px #d1d1d1;
-    border-style: none dashed dashed;
+    border-style: none none none dashed;
       button {
+        color: #41b883;
         width: 100%;
         min-height: 34px;
         border: none;
@@ -209,8 +223,11 @@ export default {
 
   .component__bottom {
     display: flex;
+    align-self: flex-end;
     width: 100%;
     min-height: 34px;
+    border: 1px #d1d1d1;
+    border-style: dashed none none none;
   }
 
   .bottom__title {
@@ -229,5 +246,7 @@ export default {
     align-items: center;
     width: 35%;
     min-height: 34px;
+    border: 1px #d1d1d1;
+    border-style: none none none dashed;
   }
 </style>
