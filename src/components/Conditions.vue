@@ -1,30 +1,30 @@
 <template>
-  <div class="component">
-    <div class="component__header">
+  <div class='component'>
+    <div class='component__header'>
       <p>{{ displaySettings.subType }}</p>
     </div>
-    <div class="component__title">
+    <div class='component__title'>
       <p>{{ displaySettings.type }}</p>
     </div>
-    <div class="component__mBody">
-      <div class="mBody__options">
+    <div class='component__mBody'>
+      <div class='mBody__options'>
         <p>{{ checkingComponentTitle }}</p>
       </div>
-      <div class="mBody__values">
-        <div class="values__opt" v-for="(element, index) of elements" :key="index">
-          <button @click="removeElement(index)">&times;</button>
-          <input v-model.number="element.condition.value" />
+      <div class='mBody__values'>
+        <div class='values__opt' v-for='(element, index) of elements' :key='index'>
+          <button @click='removeElement(index)'>&times;</button>
+          <input v-model.number='element.condition.value' />
         </div>
-        <div class="values__addBtn">
-            <button @click="addValue()">+ Add value</button>
+        <div class='values__addBtn'>
+            <button @click='addValue()'>+ Add value</button>
         </div>
       </div>
     </div>
-    <div class="component__bottom">
-      <div class="bottom__title">
+    <div class='component__bottom'>
+      <div class='bottom__title'>
         <p>Follow is</p>
       </div>
-      <div class="bottom__totalValue"></div>
+      <div class='bottom__totalValue'></div>
     </div>
   </div>
 </template>
@@ -105,7 +105,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang='scss'>
 .component {
   min-width: 225px;
   max-width: 225px;

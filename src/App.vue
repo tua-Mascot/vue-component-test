@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id='app'>
     <conditions />
   </div>
 </template>
@@ -13,10 +13,9 @@ export default {
     conditions,
   },
 };
-
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 * {
   box-sizing: border-box;
   margin: 0;
