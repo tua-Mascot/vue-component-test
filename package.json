@@ -1,7 +1,11 @@
 {
   "name": "vue-test-1",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
   "private": true,
+  "author": "tua.Mascot (Kirill P.)",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
