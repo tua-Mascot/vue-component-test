@@ -10,7 +10,12 @@
     </div>
     <div class='component__mBody'>
       <div class='mBody__options'>
-        <p>{{ checkingComponentTitle }}</p>
+        <div class='dropdown__content'>
+          <select v-model='selected'>
+            <option>Greater</option>
+            <option>Less</option>
+          </select>
+        </div>
       </div>
       <div class='mBody__values'>
          <div class='values__opt' v-for='(element, index) of elements' :key='index'> <!-- key id -->
@@ -68,6 +73,7 @@ export default {
         },
       ],
       firstOnFailSaver: null,
+      selected: '',
     };
   },
   mounted() {
@@ -75,6 +81,7 @@ export default {
   },
   computed: {
     checkingComponentTitle() {
+      // TODO
       if (this.displaySettings.type === 'followers') {
         return `Followers count is${<span class='dropdown'>Greater
         <div class='dropdown__content'>
@@ -90,7 +97,7 @@ export default {
   },
   methods: {
     addValue() {
-      const newValue = JSON.parse(JSON.stringify(this.lastItemElements)); // Why not a func? this?
+      const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
       newValue.onMatch = null;
       this.elements[this.elements.length - 1].onFail = 'fallthrough';
       this.elements.push(newValue);
@@ -127,7 +134,8 @@ export default {
     border-radius: 6px;
     border: 1px solid #41b883;
     box-shadow: 3px 3px 3px #dddddd;
-    /* overflow: hidden; */
+    /* overflow-y: hidden; */
+    overflow: hidden;
   }
 
   .component__header {
@@ -138,6 +146,7 @@ export default {
     min-height: 34px;
     /* max-height: 42px; */
     background-color: #bae7d3;
+    /* border-radius: 4px 4px 0 0; */
       p {
         padding: 0 10px 0 0;
       }
@@ -194,8 +203,6 @@ export default {
   }
 
   .dropdown__content {
-    z-index: 1;
-    display: none;
     position: absolute;
     background-color: #f1f1f1;
   }
@@ -290,7 +297,9 @@ export default {
   }
 
   .decorativeCircleLeft {
-    /* z-index: 1; */
+    /* z-index: 999;
+    clear: both;
+    overflow: visible; */
     position: absolute;
     left: -5px;
     height: 10px;
