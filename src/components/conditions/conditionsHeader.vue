@@ -3,10 +3,19 @@
     <div class="conditions__header">
       <img :src="require( `@/assets/logo.png`)" width="16" height="16" alt="Vue"/>
       <!-- <p>{{ displaySettings.subType }}</p> -->
+      <!-- <p v-if=""></p> -->
       <div class="decorativeCircleLeft"></div>
     </div>
     <div class="conditions__title">
       <!-- <p>{{ displaySettings.type }}</p> -->
+      <p>
+        <select v-model="conditions__titles_selected">
+          <option v-for="conditions__title of conditions__titles"
+          :key="conditions__title" :value="conditions__title">
+          {{ conditions__title }}
+          </option>
+        </select>
+      </p>
     </div>
     <conditionsBodyFollowers />
   </div>
@@ -20,84 +29,19 @@ export default {
   components: {
     conditionsBodyFollowers,
   },
+  data() {
+    return {
+      conditions__titles_selected: 'followers',
+      conditions__titles: [
+        'followers',
+        'likes',
+        'etc',
+      ],
+    };
+  },
 };
-// export default {
-//   name: 'conditions',
-//   data() {
-//     return {
-//       displaySettings: {
-//         subType: 'condition',
-//         type: 'followers',
-//       },
-//       elements: [
-//         {
-//           type: 'rule',
-//           condition: {
-//             entity: 'contact',
-//             field: 'followers',
-//             operand: 'lt',
-//             value: 5000,
-//           },
-//           onFail: {
-//             action: 'goto',
-//             target: '5e26e98027b2c58a70085d4e',
-//           },
-//           onMatch: {
-//             action: 'goto',
-//             target: '5e26e98027b2c58a70085d4f',
-//           },
-//         },
-//       ],
-//       firstOnFailSaver: null,
-//       selected: '',
-//     };
-//   },
-//   mounted() {
-//     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
-//   },
-//   computed: {
-//     checkingConditionsTitle() {
-//       // TODO
-//       if (this.displaySettings.type === 'followers') {
-//         return `Followers count is${<span class='dropdown'>Greater
-//         <div class='dropdown__content'>
-//         <span>Greater</span><span>Less</span>
-//         </div>
-//         </span>}than`;
-//       }
-//       return 'Err';
-//     },
-//     lastItemElements() {
-//       return this.elements[this.elements.length - 1];
-//     },
-//   },
-//   methods: {
-//     addValue() {
-//       const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
-//       newValue.onMatch = null;
-//       this.elements[this.elements.length - 1].onFail = 'fallthrough';
-//       this.elements.push(newValue);
-//     },
-//     removeElement(index) {
-//       this.elements.splice(index, 1);
-//       // this.$delete(this.elements, index); ?????
-//     },
-//   },
-//   watch: {
-//     elements: {
-//       deep: true,
-//       handler(newElements) {
-//         if (newElements.length === 1) {
-//           this.elements[0].onFail = this.firstOnFailSaver;
-//           console.log(this.elements);
-//         }
-//       },
-//     },
-//   },
-// };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this conditions only -->
 <style lang='scss'>
   .conditions {
     display: flex;
