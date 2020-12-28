@@ -9,7 +9,7 @@
     <div class="conditions__title">
       <!-- <p>{{ displaySettings.type }}</p> -->
       <p>
-        <select > <!-- v-model="conditions__titles_selected" -->
+        <select v-model="conditions_data"> <!-- v-model="conditions__titles_selected" -->
           <option v-for="conditions__title of conditions__titles"
           :key="conditions__title">  <!-- :value="conditions__title" -->
           {{ conditions__title }}
@@ -18,26 +18,32 @@
       </p>
     </div>
     <!-- <conditionsBodyFollowers /> -->
-    <component v-if="select === 'followers'"></component>
-    <component v-else-if=""></component>
-    <component v-else-if=""></component>
-    <component v-else>Error</component>
+    <!-- <conditionsBodyFollowers v-if="this.conditions_data === 'followers'" />
+    <conditionsBodyLikes v-else-if="this.conditions_data === 'likes'" />
+    <conditionsBodyEtc v-else-if="this.conditions_data === 'etc'" /> -->
+    <!-- <component v-else>Error</component> -->
+    <component v-bind:is="conditions_data"></component>
   </div>
 </template>
 
 <script>
-// import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
+import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
+import conditionsBodyLikes from './conditionsBodyFollowers.vue';
+import conditionsBodyEtc from './conditionsBodyFollowers.vue';
 
 export default {
   name: 'conditionsHeader',
   components: {
-    conditionsBodyFollowers: () => import('./conditionsBodyFollowers.vue'),
-    conditionsBodyLikes: () => import('./conditionsBodyFollowers.vue'),
-    conditionsBodyEtc: () => import('./conditionsBodyFollowers.vue'),
-    // conditionsBodyFollowers,
+    // conditionsBodyFollowers: () => import('./conditionsBodyFollowers.vue'),
+    // conditionsBodyLikes: () => import('./conditionsBodyFollowers.vue'),
+    // conditionsBodyEtc: () => import('./conditionsBodyFollowers.vue'),
+    conditionsBodyFollowers,
+    conditionsBodyLikes,
+    conditionsBodyEtc,
   },
   data() {
     return {
+      conditions_data: '',
       conditions__titles_current: '',
       conditions__titles: [
         'followers',
@@ -46,7 +52,11 @@ export default {
       ],
     };
   },
+  beforeUpdate() {
+    console.log(this.conditions_data);
+  },
 };
+
 </script>
 
 <style lang='scss'>
