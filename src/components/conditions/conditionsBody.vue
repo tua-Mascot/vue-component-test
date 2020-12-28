@@ -1,14 +1,5 @@
 <template>
-  <div class='component'>
-    <div class='component__header'>
-      <img :src='require( `@/assets/logo.png`)' width='16' height='16' alt='Vue'/>
-      <p>{{ displaySettings.subType }}</p>
-      <div class='decorativeCircleLeft'></div>
-    </div>
-    <div class='component__title'>
-      <p>{{ displaySettings.type }}</p>
-    </div>
-    <div class='component__mBody'>
+   <div class='conditions__mBody'>
       <div class='mBody__options'>
         <div class='dropdown__content'>
           <select v-model='selected'>
@@ -30,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class='component__bottom'>
+    <div class='conditions__bottom'>
       <div class='bottom__title'>
         <p>Followers count is</p>
       </div>
@@ -41,12 +32,11 @@
         <div class='decorativeCircleRight'></div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'conditions',
+  name: 'conditionsBody',
   data() {
     return {
       displaySettings: {
@@ -80,7 +70,7 @@ export default {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
   computed: {
-    checkingComponentTitle() {
+    checkingConditionsTitle() {
       // TODO
       if (this.displaySettings.type === 'followers') {
         return `Followers count is${<span class='dropdown'>Greater
@@ -121,61 +111,8 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
-  .component {
-    display: flex;
-    flex-direction: column;
-    min-width: 225px;
-    max-width: 225px;
-    min-height: 275px;
-    margin: 12px;
-    background-color: #ffffff;
-    border-radius: 6px;
-    border: 1px solid #41b883;
-    box-shadow: 3px 3px 3px #dddddd;
-    /* overflow-y: hidden; */
-    overflow: hidden;
-  }
-
-  .component__header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 34px;
-    /* max-height: 42px; */
-    background-color: #bae7d3;
-    /* border-radius: 4px 4px 0 0; */
-      p {
-        padding: 0 10px 0 0;
-      }
-      p:first-letter {
-        text-transform: capitalize;
-      }
-      img {
-        margin: 0 6px;
-      }
-  }
-
-  .component__title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 34px;
-    border: 1px solid #d1d1d1;
-    border-style: solid none;
-      p {
-        padding: 0 10px;
-        color: #818181;
-        font-size: 9px;
-      }
-      p:first-letter {
-        text-transform: capitalize;
-      }
-  }
-
-  .component__mBody {
+ .conditions__mBody {
     display: flex;
     width: 100%;
     height: 100%;
@@ -257,7 +194,7 @@ export default {
       }
   }
 
-  .component__bottom {
+  .conditions__bottom {
     display: flex;
     align-self: flex-end;
     width: 100%;
@@ -294,19 +231,6 @@ export default {
       }
     /* border: 1px #d1d1d1;
     border-style: none none none dashed; */
-  }
-
-  .decorativeCircleLeft {
-    /* z-index: 999;
-    clear: both;
-    overflow: visible; */
-    position: absolute;
-    left: -5px;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    border: 1px solid #41b883;
-    background-color: #ffffff;
   }
 
   .decorativeCircleRight {
