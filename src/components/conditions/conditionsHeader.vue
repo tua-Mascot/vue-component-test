@@ -2,23 +2,23 @@
   <div class="conditions">
     <div class="conditions__header">
       <img :src="require( `@/assets/logo.png`)" width="16" height="16" alt="Vue"/>
-      <p>{{ displaySettings.subType }}</p>
+      <!-- <p>{{ displaySettings.subType }}</p> -->
       <div class="decorativeCircleLeft"></div>
     </div>
     <div class="conditions__title">
-      <p>{{ displaySettings.type }}</p>
+      <!-- <p>{{ displaySettings.type }}</p> -->
     </div>
-    <conditionsBody />
+    <conditionsBodyFollowers />
   </div>
 </template>
 
 <script>
-import conditionsBody from './conditionsBody.vue';
+import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
 
 export default {
   name: 'conditionsHeader',
   components: {
-    conditionsBody,
+    conditionsBodyFollowers,
   },
 };
 // export default {
