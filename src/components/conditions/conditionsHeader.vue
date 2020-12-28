@@ -17,7 +17,11 @@
         </select>
       </p>
     </div>
-    <conditionsBodyFollowers />
+    <!-- <conditionsBodyFollowers /> -->
+    <component v-if="select === 'followers'"></component>
+    <component v-else-if=""></component>
+    <component v-else-if=""></component>
+    <component v-else>Error</component>
   </div>
 </template>
 
