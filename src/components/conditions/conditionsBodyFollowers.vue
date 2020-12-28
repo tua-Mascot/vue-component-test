@@ -10,7 +10,7 @@
       </div>
       <div class="mBody__values">
          <div class="values__opt" v-for="(element, index) of elements" :key="index"> <!-- key id -->
-          <button :disabled="elements.length == 1" @click="removeElement(index)"
+          <button :disabled="elements.length === 1" @click="removeElement(index)"
           :style="{opacity: elements.length > 1 ? 1 : 0}">&times;</button>
           <input v-model="element.condition.value" />
           <div class="decorativeCircleRight"></div>
@@ -94,7 +94,6 @@ export default {
     },
     removeElement(index) {
       this.elements.splice(index, 1);
-      // this.$delete(this.elements, index); ?????
     },
   },
   watch: {
