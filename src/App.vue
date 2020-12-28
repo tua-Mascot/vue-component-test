@@ -1,16 +1,16 @@
 <template>
   <div id='app'>
-    <conditions />
+    <conditionsHeader />
   </div>
 </template>
 
 <script>
-import conditions from './components/Conditions.vue';
+import conditionsHeader from './components/conditions/conditionsHeader.vue';
 
 export default {
   name: 'app',
   components: {
-    conditions,
+    conditionsHeader,
   },
 };
 </script>
