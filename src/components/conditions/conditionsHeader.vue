@@ -9,9 +9,9 @@
     <div class="conditions__title">
       <!-- <p>{{ displaySettings.type }}</p> -->
       <p>
-        <select v-model="conditions__titles_selected">
+        <select > <!-- v-model="conditions__titles_selected" -->
           <option v-for="conditions__title of conditions__titles"
-          :key="conditions__title" :value="conditions__title">
+          :key="conditions__title">  <!-- :value="conditions__title" -->
           {{ conditions__title }}
           </option>
         </select>
@@ -22,16 +22,19 @@
 </template>
 
 <script>
-import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
+// import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
 
 export default {
   name: 'conditionsHeader',
   components: {
-    conditionsBodyFollowers,
+    conditionsBodyFollowers: () => import('./conditionsBodyFollowers.vue'),
+    conditionsBodyLikes: () => import('./conditionsBodyFollowers.vue'),
+    conditionsBodyEtc: () => import('./conditionsBodyFollowers.vue'),
+    // conditionsBodyFollowers,
   },
   data() {
     return {
-      conditions__titles_selected: 'followers',
+      conditions__titles_current: '',
       conditions__titles: [
         'followers',
         'likes',
