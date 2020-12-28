@@ -1,42 +1,42 @@
 <template>
-   <div class='conditions__mBody'>
-      <div class='mBody__options'>
-        <div class='dropdown__content'>
-          <select v-model='selected'>
+   <div class="conditions__mBody">
+      <div class="mBody__options">
+        <div class="dropdown__content">
+          <select v-model="selected">
             <option>Greater</option>
             <option>Less</option>
           </select>
         </div>
       </div>
-      <div class='mBody__values'>
-         <div class='values__opt' v-for='(element, index) of elements' :key='index'> <!-- key id -->
-          <button :disabled='elements.length == 1' @click='removeElement(index)'
-          :style='{opacity: elements.length > 1 ? 1 : 0}'>&times;</button>
-          <input v-model='element.condition.value' />
-          <div class='decorativeCircleRight'></div>
+      <div class="mBody__values">
+         <div class="values__opt" v-for="(element, index) of elements" :key="index"> <!-- key id -->
+          <button :disabled="elements.length == 1" @click="removeElement(index)"
+          :style="{opacity: elements.length > 1 ? 1 : 0}">&times;</button>
+          <input v-model="element.condition.value" />
+          <div class="decorativeCircleRight"></div>
         </div>
-        <div class='values__addBtn'>
-            <button @click='addValue()'>+ Add value</button>
-            <div class='decorativeCircleRight'></div>
+        <div class="values__addBtn">
+            <button @click="addValue()">+ Add value</button>
+            <div class="decorativeCircleRight"></div>
         </div>
       </div>
     </div>
-    <div class='conditions__bottom'>
-      <div class='bottom__title'>
+    <div class="conditions__bottom">
+      <div class="bottom__title">
         <p>Followers count is</p>
       </div>
-      <div class='bottom__wrap'>
-        <div class='bottom__totalValue'>
+      <div class="bottom__wrap">
+        <div class="bottom__totalValue">
           <p>5000 or </p>
         </div>
-        <div class='decorativeCircleRight'></div>
+        <div class="decorativeCircleRight"></div>
       </div>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'conditionsBody',
+  name: 'conditionsBodyFollowers',
   data() {
     return {
       displaySettings: {
