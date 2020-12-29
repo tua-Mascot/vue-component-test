@@ -17,12 +17,8 @@
         </select>
       </p>
     </div>
-    <conditionsBodyFollowers />
-    <!-- <conditionsBodyFollowers v-if="this.conditions_data === 'followers'" />
-    <conditionsBodyLikes v-else-if="this.conditions_data === 'likes'" />
-    <conditionsBodyEtc v-else-if="this.conditions_data === 'etc'" /> -->
-    <!-- <component v-else>Error</component> -->
-    <!-- <component :is="this.conditionsBodyFollowers"></component> -->
+    <!-- <conditionsBodyFollowers /> -->
+    <component v-if="component" :is="conditionsBodyFollowers"></component>
   </div>
 </template>
 
@@ -43,7 +39,7 @@ export default {
   },
   data() {
     return {
-      component: '',
+      component: null,
       conditions_data: '',
       conditions__titles: [
         'followers',
@@ -52,16 +48,21 @@ export default {
       ],
     };
   },
-  beforeUpdate() {
-    console.log(this.conditions_data);
+  computed: {
+    element() {
+      return () => import('./conditionsBodyFollowers.vue');
+    },
   },
-  methods: {
-    componentChecker() {
-      if (this.conditions_data === 'followers') {
-        // console.log(componentChecker());
-        return this.component === conditionsBodyFollowers;
-      }
-      return undefined;
+  watch: {
+    conditions_data: {
+      handler(value) {
+        if (value === 'followers') {
+          this.element().then(() => {
+            this.component = () => this.element();
+            console.log(this.element);
+          });
+        }
+      },
     },
   },
 };
@@ -77,11 +78,11 @@ export default {
     min-height: 275px;
     margin: 12px;
     background-color: #ffffff;
+    /* background: linear-gradient( #bae7d3 0px, #bae7d3 10px, #ffffff 10px, #ffffff 100%); */
     border-radius: 6px;
     border: 1px solid #41b883;
     box-shadow: 3px 3px 3px #dddddd;
-    /* overflow-y: hidden; */
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .conditions__header {
@@ -90,9 +91,8 @@ export default {
     align-items: center;
     width: 100%;
     min-height: 34px;
-    /* max-height: 42px; */
     background-color: #bae7d3;
-    /* border-radius: 4px 4px 0 0; */
+    border-radius: 5px 5px 0 0;
       p {
         padding: 0 10px 0 0;
       }

@@ -70,6 +70,9 @@ export default {
       selected: 'Greater',
     };
   },
+  // props: {
+  //   title: {},
+  // },
   mounted() {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
@@ -144,16 +147,20 @@ export default {
       }
   }
 
-  .dropdown {
-    position: relative;
-    :hover {
-      cursor: pointer;
-    }
-  }
-
   .dropdown__content {
     position: absolute;
-    background-color: #f1f1f1;
+      select {
+        width: 50px;
+        font-size: 14px;
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+          &:focus {
+            background-color: #bae7d3
+        }
+      }
   }
 
   .mBody__values {
@@ -161,7 +168,7 @@ export default {
     align-items: center;
     flex-direction: column;
     width: 35%;
-    /* min-height: 34px; */
+    min-height: 34px;
   }
 
   .values__opt {
@@ -172,15 +179,16 @@ export default {
     border: 1px #d1d1d1;
     border-style: none none dashed none;
       input {
+        color: #41b883;
         width: 80%;
         min-height: 34px;
         padding: 0 0 0 5px;
         border: none;
         outline: none;
         font-size: 12px;
-          /* &:focus {
-            border: 1px solid #41b883;
-          } */
+          &:focus {
+            text-decoration: underline;
+          }
       }
       button {
         width: 20%;
@@ -240,6 +248,7 @@ export default {
     /* width: 35%; */
     min-height: 34px;
       p {
+        color: #b84141;
         padding-left: 4px;
       }
   }
