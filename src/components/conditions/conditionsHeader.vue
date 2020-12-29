@@ -77,11 +77,11 @@ export default {
     min-height: 275px;
     margin: 12px;
     background-color: #ffffff;
+    /* background: linear-gradient( #bae7d3 0px, #bae7d3 10px, #ffffff 10px, #ffffff 100%); */
     border-radius: 6px;
     border: 1px solid #41b883;
     box-shadow: 3px 3px 3px #dddddd;
-    /* overflow-y: hidden; */
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .conditions__header {
@@ -90,9 +90,8 @@ export default {
     align-items: center;
     width: 100%;
     min-height: 34px;
-    /* max-height: 42px; */
     background-color: #bae7d3;
-    /* border-radius: 4px 4px 0 0; */
+    border-radius: 5px 5px 0 0;
       p {
         padding: 0 10px 0 0;
       }
