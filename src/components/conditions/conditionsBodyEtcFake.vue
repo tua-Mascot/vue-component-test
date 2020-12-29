@@ -2,14 +2,10 @@
    <div class="conditions__mBody">
       <div class="mBody__options">
         <div class="dropdown__content">
-          <p>
-            Followers count <br> is
-            <select v-model="selected">
-              <option>Greater</option>
-              <option>Less</option>
-            </select>
-            than
-          </p>
+          <select v-model="selected">
+            <option>Greater</option>
+            <option>Less</option>
+          </select>
         </div>
       </div>
       <div class="mBody__values">
@@ -31,7 +27,7 @@
       </div>
       <div class="bottom__wrap">
         <div class="bottom__totalValue">
-          <p>5000 or <br><span>{{ checkingSelected }}</span></p>
+          <p>5000 or </p>
         </div>
         <div class="decorativeCircleRight"></div>
       </div>
@@ -40,7 +36,7 @@
 
 <script>
 export default {
-  name: 'conditionsBodyFollowers',
+  name: 'conditionsBodyEtcFake',
   data() {
     return {
       displaySettings: {
@@ -67,33 +63,27 @@ export default {
         },
       ],
       firstOnFailSaver: null,
-      selected: 'Greater',
+      selected: '',
     };
   },
   mounted() {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
   computed: {
-    checkingSelected() {
-      if (this.selected === 'Greater') {
-        console.log(1);
-        return 'less';
+    checkingConditionsTitle() {
+      // TODO
+      if (this.displaySettings.type === 'followers') {
+        return `Followers count is${<span class='dropdown'>Greater
+        <div class='dropdown__content'>
+        <span>Greater</span><span>Less</span>
+        </div>
+        </span>}than`;
       }
-      console.log(2);
-      return 'greater';
+      return 'Err';
     },
-    // checkingConditionsTitle() {
-    //   // TODO
-    //   if (this.displaySettings.type === 'followers') {
-    //     return `Followers count is${<span class='dropdown'>Greater
-    //     <div class='dropdown__content'>
-    //     <span>Greater</span><span>Less</span>
-    //     </div>
-    //     </span>}than`;
-    //   }
-    //   return 'Err';
-    // },
-
+    lastItemElements() {
+      return this.elements[this.elements.length - 1];
+    },
   },
   methods: {
     addValue() {
@@ -104,9 +94,6 @@ export default {
     },
     removeElement(index) {
       this.elements.splice(index, 1);
-    },
-    lastItemElements() {
-      return this.elements[this.elements.length - 1];
     },
   },
   watch: {
@@ -208,6 +195,7 @@ export default {
 
   .conditions__bottom {
     display: flex;
+    align-self: flex-end;
     width: 100%;
     min-height: 34px;
     margin-top: auto;
@@ -230,18 +218,18 @@ export default {
 
   .bottom__wrap {
     position: relative;
-    width: 35%;
   }
 
   .bottom__totalValue {
     display: flex;
     align-items: center;
-    margin: 0;
-    /* width: 35%; */
+    width: 35%;
     min-height: 34px;
       p {
-        padding-left: 4px;
+        padding-left: 20px;
       }
+    /* border: 1px #d1d1d1;
+    border-style: none none none dashed; */
   }
 
   .decorativeCircleRight {

@@ -17,19 +17,19 @@
         </select>
       </p>
     </div>
-    <!-- <conditionsBodyFollowers /> -->
+    <conditionsBodyFollowers />
     <!-- <conditionsBodyFollowers v-if="this.conditions_data === 'followers'" />
     <conditionsBodyLikes v-else-if="this.conditions_data === 'likes'" />
     <conditionsBodyEtc v-else-if="this.conditions_data === 'etc'" /> -->
     <!-- <component v-else>Error</component> -->
-    <component v-bind:is="conditions_data"></component>
+    <!-- <component :is="this.conditionsBodyFollowers"></component> -->
   </div>
 </template>
 
 <script>
 import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
-import conditionsBodyLikes from './conditionsBodyFollowers.vue';
-import conditionsBodyEtc from './conditionsBodyFollowers.vue';
+// import conditionsBodyLikesFake from './conditionsBodyLikesFake.vue';
+// import conditionsBodyEtcFake from './conditionsBodyEtcFake.vue';
 
 export default {
   name: 'conditionsHeader',
@@ -38,13 +38,13 @@ export default {
     // conditionsBodyLikes: () => import('./conditionsBodyFollowers.vue'),
     // conditionsBodyEtc: () => import('./conditionsBodyFollowers.vue'),
     conditionsBodyFollowers,
-    conditionsBodyLikes,
-    conditionsBodyEtc,
+    // conditionsBodyLikesFake,
+    // conditionsBodyEtcFake,
   },
   data() {
     return {
+      component: '',
       conditions_data: '',
-      conditions__titles_current: '',
       conditions__titles: [
         'followers',
         'likes',
@@ -54,6 +54,15 @@ export default {
   },
   beforeUpdate() {
     console.log(this.conditions_data);
+  },
+  methods: {
+    componentChecker() {
+      if (this.conditions_data === 'followers') {
+        // console.log(componentChecker());
+        return this.component === conditionsBodyFollowers;
+      }
+      return undefined;
+    },
   },
 };
 
