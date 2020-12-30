@@ -67,8 +67,8 @@ export default {
           },
         },
       ],
-      firstOnFailSaver: null,
       selected: 'Greater',
+      firstOnFailSaver: null,
     };
   },
   mounted() {
@@ -135,7 +135,8 @@ export default {
     &__m-body-options-dropdown {
       position: absolute;
         select {
-          width: 50px;
+          width: 52px;
+          padding-left: 1px;
           font-size: 14px;
           border: none;
           -webkit-appearance: none;
