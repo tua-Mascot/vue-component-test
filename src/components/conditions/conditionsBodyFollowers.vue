@@ -21,7 +21,7 @@
           <div class="decorative-circle--right"></div>
         </div>
         <div class="conditions__m-body-values-add-btn">
-            <button @click="addValue()">+ Add value</button>
+            <button @click="addValue">+ Add value</button>
             <div class="decorative-circle--right"></div>
         </div>
       </div>
@@ -77,14 +77,15 @@ export default {
   computed: {
     checkingSelected() {
       if (this.selected === 'Greater') {
-        console.log(1);
         return 'less';
       }
-      console.log(2);
       return 'greater';
     },
   },
   methods: {
+    lastItemElements() {
+      return this.elements[this.elements.length - 1];
+    },
     addValue() {
       const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
       newValue.onMatch = null;
@@ -93,9 +94,6 @@ export default {
     },
     removeElement(index) {
       this.elements.splice(index, 1);
-    },
-    lastItemElements() {
-      return this.elements[this.elements.length - 1];
     },
   },
   watch: {
