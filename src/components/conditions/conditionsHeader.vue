@@ -2,16 +2,15 @@
   <div class="conditions">
     <div class="conditions__header">
       <img :src="require( `@/assets/logo.png`)" width="16" height="16" alt="Vue"/>
-      <!-- <p>{{ displaySettings.subType }}</p> -->
-      <!-- <p v-if=""></p> -->
+      <p>{{ titleData }}</p>
       <div class="decorative-circle--left"></div>
     </div>
     <div class="conditions__title">
       <!-- <p>{{ displaySettings.type }}</p> -->
       <p>
-        <select v-model="conditionsData"> <!-- v-model="conditions__titles_selected" -->
+        <select v-model="conditionsData">
           <option v-for="conditionsTitle of conditionsTitles"
-          :key="conditionsTitle">  <!-- :value="conditions__title" -->
+          :key="conditionsTitle">
           {{ conditionsTitle }}
           </option>
         </select>
@@ -36,11 +35,11 @@ export default {
   data() {
     return {
       component: null,
-      conditionsData: '',
+      conditionsData: 'Followers',
       conditionsTitles: [
-        'followers',
-        'likes',
-        'etc',
+        'Followers',
+        'Likes',
+        'Etc',
       ],
     };
   },
@@ -77,7 +76,7 @@ export default {
     /* background: linear-gradient( #bae7d3 0px, #bae7d3 10px, #ffffff 10px, #ffffff 100%); */
     border-radius: 6px;
     border: 1px solid #41b883;
-    box-shadow: 3px 3px 3px #dddddd;
+    box-shadow: 3px 3px 3px #cfcfcf;
     /* overflow: hidden; */
       &__header {
         position: relative;
@@ -110,7 +109,20 @@ export default {
             color: #818181;
             font-size: 9px;
           }
-          p:first-letter {
+          select {
+            padding-left: 2px;
+            width: 64px;
+            font-size: 14px;
+            border: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+              &:focus {
+                background-color: #bae7d3
+              }
+          }
+          select:first-letter {
             text-transform: capitalize;
           }
       }

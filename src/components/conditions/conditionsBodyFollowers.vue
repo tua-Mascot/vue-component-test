@@ -21,7 +21,7 @@
           <div class="decorative-circle--right"></div>
         </div>
         <div class="conditions__m-body-values-add-btn">
-            <button @click="addValue()">+ Add value</button>
+            <button @click="addValue">+ Add value</button>
             <div class="decorative-circle--right"></div>
         </div>
       </div>
@@ -67,21 +67,23 @@ export default {
           },
         },
       ],
-      firstOnFailSaver: null,
       selected: 'Greater',
+      firstOnFailSaver: null,
     };
   },
   mounted() {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
   computed: {
+
     checkingSelected() {
       if (this.selected === 'Greater') {
-        console.log(1);
         return 'less';
       }
-      console.log(2);
       return 'greater';
+    },
+    lastItemElements() {
+      return this.elements[this.elements.length - 1];
     },
   },
   methods: {
@@ -94,9 +96,9 @@ export default {
     removeElement(index) {
       this.elements.splice(index, 1);
     },
-    lastItemElements() {
-      return this.elements[this.elements.length - 1];
-    },
+    titleData() {
+      return this.$emit(this.displaySettings.subType);
+    }, // TODO ?????????????
   },
   watch: {
     elements: {
@@ -104,7 +106,7 @@ export default {
       handler(newElements) {
         if (newElements.length === 1) {
           this.elements[0].onFail = this.firstOnFailSaver;
-          console.log(this.elements);
+          console.log(this.elements); // TODO Clean after
         }
       },
     },
@@ -135,7 +137,8 @@ export default {
     &__m-body-options-dropdown {
       position: absolute;
         select {
-          width: 50px;
+          width: 52px;
+          padding-left: 1px;
           font-size: 14px;
           border: none;
           -webkit-appearance: none;
