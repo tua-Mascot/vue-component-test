@@ -17,12 +17,8 @@
         </select>
       </p>
     </div>
-    <conditionsBodyFollowers />
-    <!-- <conditionsBodyFollowers v-if="this.conditions_data === 'followers'" />
-    <conditionsBodyLikes v-else-if="this.conditions_data === 'likes'" />
-    <conditionsBodyEtc v-else-if="this.conditions_data === 'etc'" /> -->
-    <!-- <component v-else>Error</component> -->
-    <!-- <component :is="this.conditionsBodyFollowers"></component> -->
+    <!-- <conditionsBodyFollowers /> -->
+    <component v-if="component" :is="conditionsBodyFollowers"></component>
   </div>
 </template>
 
@@ -43,7 +39,7 @@ export default {
   },
   data() {
     return {
-      component: '',
+      component: null,
       conditions_data: '',
       conditions__titles: [
         'followers',
@@ -52,16 +48,21 @@ export default {
       ],
     };
   },
-  beforeUpdate() {
-    console.log(this.conditions_data);
+  computed: {
+    element() {
+      return () => import('./conditionsBodyFollowers.vue');
+    },
   },
-  methods: {
-    componentChecker() {
-      if (this.conditions_data === 'followers') {
-        // console.log(componentChecker());
-        return this.component === conditionsBodyFollowers;
-      }
-      return undefined;
+  watch: {
+    conditions_data: {
+      handler(value) {
+        if (value === 'followers') {
+          this.element().then(() => {
+            this.component = () => this.element();
+            console.log(this.element);
+          });
+        }
+      },
     },
   },
 };

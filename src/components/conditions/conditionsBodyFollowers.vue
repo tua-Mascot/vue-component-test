@@ -70,6 +70,9 @@ export default {
       selected: 'Greater',
     };
   },
+  // props: {
+  //   title: {},
+  // },
   mounted() {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
