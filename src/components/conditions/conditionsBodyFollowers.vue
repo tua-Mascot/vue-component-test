@@ -81,11 +81,11 @@ export default {
       }
       return 'greater';
     },
-  },
-  methods: {
     lastItemElements() {
       return this.elements[this.elements.length - 1];
     },
+  },
+  methods: {
     addValue() {
       const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
       newValue.onMatch = null;
@@ -102,7 +102,7 @@ export default {
       handler(newElements) {
         if (newElements.length === 1) {
           this.elements[0].onFail = this.firstOnFailSaver;
-          console.log(this.elements);
+          console.log(this.elements); // TODO Clean after
         }
       },
     },
