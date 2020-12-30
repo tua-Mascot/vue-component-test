@@ -2,7 +2,7 @@
   <div class="conditions">
     <div class="conditions__header">
       <img :src="require( `@/assets/logo.png`)" width="16" height="16" alt="Vue"/>
-      <!-- <p>{{ displaySettings.subType }}</p> -->
+      <p>{{ titleData }}</p>
       <div class="decorative-circle--left"></div>
     </div>
     <div class="conditions__title">

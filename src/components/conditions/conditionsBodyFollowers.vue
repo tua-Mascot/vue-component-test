@@ -75,6 +75,7 @@ export default {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
   computed: {
+
     checkingSelected() {
       if (this.selected === 'Greater') {
         return 'less';
@@ -95,6 +96,9 @@ export default {
     removeElement(index) {
       this.elements.splice(index, 1);
     },
+    titleData() {
+      return this.$emit(this.displaySettings.subType);
+    }, // TODO ?????????????
   },
   watch: {
     elements: {
