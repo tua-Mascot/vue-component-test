@@ -2,7 +2,8 @@
   <div class="conditions">
     <div class="conditions__header">
       <img :src="require( `@/assets/logo.png`)" width="16" height="16" alt="Vue"/>
-      <p @titleData="titleDataValue">{{ titleDataValue }}</p> // TODO
+      <p>Conditions</p>
+      <!-- <p @titleData="titleDataValue">{{ titleDataValue }}</p> // TODO -->
       <div class="decorative-circle--left"></div>
     </div>
     <div class="conditions__title">
