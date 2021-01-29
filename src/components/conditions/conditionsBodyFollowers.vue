@@ -71,11 +71,12 @@ export default {
       firstOnFailSaver: null,
     };
   },
+
   mounted() {
     this.firstOnFailSaver = JSON.parse(JSON.stringify(this.elements[0]));
   },
-  computed: {
 
+  computed: {
     checkingSelected() {
       if (this.selected === 'Greater') {
         return 'less';
@@ -86,6 +87,7 @@ export default {
       return this.elements[this.elements.length - 1];
     },
   },
+
   methods: {
     addValue() {
       const newValue = JSON.parse(JSON.stringify(this.lastItemElements));
@@ -97,16 +99,16 @@ export default {
       this.elements.splice(index, 1);
     },
     titleData() {
-      return this.$emit(this.displaySettings.subType);
-    }, // TODO ?????????????
+      this.$emit('displaySubType', this.displaySettings.subType);
+    }, // TODO ?
   },
+
   watch: {
     elements: {
       deep: true,
       handler(newElements) {
         if (newElements.length === 1) {
           this.elements[0].onFail = this.firstOnFailSaver;
-          console.log(this.elements); // TODO Clean after
         }
       },
     },
