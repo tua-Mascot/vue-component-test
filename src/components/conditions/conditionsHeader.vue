@@ -2,11 +2,10 @@
   <div class="conditions">
     <div class="conditions__header">
       <img :src="require( `@/assets/logo.png`)" width="16" height="16" alt="Vue"/>
-      <p>{{ titleData }}</p>
+      <p @titleData="titleDataValue">{{ titleDataValue }}</p> // TODO
       <div class="decorative-circle--left"></div>
     </div>
     <div class="conditions__title">
-      <!-- <p>{{ displaySettings.type }}</p> -->
       <p>
         <select v-model="conditionsData">
           <option v-for="conditionsTitle of conditionsTitles"
@@ -27,10 +26,7 @@ import conditionsBodyFollowers from './conditionsBodyFollowers.vue';
 export default {
   name: 'conditionsHeader',
   components: {
-    // conditionsBodyFollowers: () => import('./conditionsBodyFollowers.vue'),
     conditionsBodyFollowers,
-    // conditionsBodyLikesFake,
-    // conditionsBodyEtcFake,
   },
   data() {
     return {
@@ -42,23 +38,6 @@ export default {
         'Etc',
       ],
     };
-  },
-  computed: {
-    element() {
-      return () => import('./conditionsBodyFollowers.vue');
-    },
-  },
-  watch: {
-    conditionsData: {
-      handler(value) {
-        if (value === 'followers') {
-          this.element().then(() => {
-            this.component = () => this.element();
-            console.log(this.element);
-          });
-        }
-      },
-    },
   },
 };
 
