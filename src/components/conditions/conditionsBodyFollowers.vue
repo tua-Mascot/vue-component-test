@@ -98,9 +98,9 @@ export default {
     removeElement(index) {
       this.elements.splice(index, 1);
     },
-    titleData() {
-      this.$emit('displaySubType', this.displaySettings.subType);
-    }, // TODO ?
+    // titleData() {
+    //   this.$emit('displaySubType', this.displaySettings.subType);
+    // }, // TODO ?
   },
 
   watch: {
