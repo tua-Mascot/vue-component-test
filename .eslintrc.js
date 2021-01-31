@@ -8,7 +8,7 @@ module.exports = {
     parser: 'babel-eslint',
   },
   rules: {
-    'vue/html-quotes': ['error', 'single'],
+    'vue/html-quotes': ['error', 'double'],
     'jsx-quotes': ['error', 'prefer-single'],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

@@ -1,16 +1,16 @@
 <template>
-  <div id='app'>
-    <conditions />
+  <div id="app">
+    <conditionsHeader />
   </div>
 </template>
 
 <script>
-import conditions from './components/Conditions.vue';
+import conditionsHeader from './components/conditions/conditionsHeader.vue';
 
 export default {
   name: 'app',
   components: {
-    conditions,
+    conditionsHeader,
   },
 };
 </script>
@@ -31,7 +31,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 12px;
+    font-size: 13px;
     text-align: left;
     background-color: #f5f5f7;
     color: #000000;
